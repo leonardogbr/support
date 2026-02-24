@@ -104,7 +104,7 @@
 
     <div class="faq-item">
       <p class="faq-q">Is the app safe for children?</p>
-      <p class="faq-a">Yes. One Tap Dodge is designed for all ages. We use child-directed ad settings (no personalized ads, age-appropriate content only) and do not collect personal information. See our <a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Privacy Policy</a> for details.</p>
+      <p class="faq-a">Yes. One Tap Dodge is designed for all ages. We use child-directed ad settings (no personalized ads, age-appropriate content only) and do not collect personal information. See our <a href="https://leonardogbr.github.io/privacy-policies/onetapdodge/">Privacy Policy</a> for details.</p>
     </div>
 
     <h2>Contact Us</h2>
@@ -113,7 +113,7 @@
       <p>We typically respond within a few days. Include the app name and a brief description of your question or issue.</p>
     </div>
 
-    <p style="margin-top: 2rem;"><a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Privacy Policy</a></p>
+    <p style="margin-top: 2rem;"><a href="https://leonardogbr.github.io/privacy-policies/onetapdodge/">Privacy Policy</a></p>
   </div>
 
   <div id="content-es" class="lang-content">
@@ -148,7 +148,7 @@
 
     <div class="faq-item">
       <p class="faq-q">¿La app es segura para niños?</p>
-      <p class="faq-a">Sí. One Tap Dodge está diseñada para todas las edades. Usamos ajustes de anuncios dirigidos a niños (sin anuncios personalizados, solo contenido apropiado) y no recopilamos información personal. Consulta nuestra <a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Política de Privacidad</a> para más detalles.</p>
+      <p class="faq-a">Sí. One Tap Dodge está diseñada para todas las edades. Usamos ajustes de anuncios dirigidos a niños (sin anuncios personalizados, solo contenido apropiado) y no recopilamos información personal. Consulta nuestra <a href="https://leonardogbr.github.io/privacy-policies/onetapdodge/">Política de Privacidad</a> para más detalles.</p>
     </div>
 
     <h2>Contáctanos</h2>
@@ -157,7 +157,7 @@
       <p>Normalmente respondemos en unos días. Incluye el nombre de la app y una breve descripción de tu pregunta o problema.</p>
     </div>
 
-    <p style="margin-top: 2rem;"><a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Política de Privacidad</a></p>
+    <p style="margin-top: 2rem;"><a href="https://leonardogbr.github.io/privacy-policies/onetapdodge/">Política de Privacidad</a></p>
   </div>
 
   <div id="content-pt" class="lang-content">
@@ -192,7 +192,7 @@
 
     <div class="faq-item">
       <p class="faq-q">O app é seguro para crianças?</p>
-      <p class="faq-a">Sim. One Tap Dodge foi projetado para todas as idades. Usamos configurações de anúncios direcionadas a crianças (sem anúncios personalizados, apenas conteúdo adequado) e não coletamos informações pessoais. Consulte nossa <a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Política de Privacidade</a> para detalhes.</p>
+      <p class="faq-a">Sim. One Tap Dodge foi projetado para todas as idades. Usamos configurações de anúncios direcionadas a crianças (sem anúncios personalizados, apenas conteúdo adequado) e não coletamos informações pessoais. Consulte nossa <a href="https://leonardogbr.github.io/privacy-policies/onetapdodge/">Política de Privacidade</a> para detalhes.</p>
     </div>
 
     <h2>Contato</h2>
@@ -201,10 +201,12 @@
       <p>Normalmente respondemos em alguns dias. Inclua o nome do app e uma breve descrição da sua dúvida ou problema.</p>
     </div>
 
-    <p style="margin-top: 2rem;"><a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Política de Privacidade</a></p>
+    <p style="margin-top: 2rem;"><a href="https://leonardogbr.github.io/privacy-policies/onetapdodge/">Política de Privacidade</a></p>
   </div>
 
   <script>
+    const PRIVACY_BASE = 'https://leonardogbr.github.io/privacy-policies/onetapdodge/';
+
     function showLang(lang) {
       document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
@@ -212,7 +214,26 @@
       document.getElementById('btn-' + lang).classList.add('active');
       var backText = { en: '← All apps', es: '← Todas las apps', pt: '← Todos os apps' };
       document.getElementById('back-link').textContent = backText[lang] || backText.en;
+      document.getElementById('back-link').href = '..?lang=' + (lang || 'en');
+      updatePrivacyLinks(lang);
     }
+
+    function updatePrivacyLinks(lang) {
+      const url = new URL(PRIVACY_BASE);
+      url.searchParams.set('lang', lang);
+      const href = url.toString();
+      document.querySelectorAll('a[href*="privacy-policies/onetapdodge"]').forEach(a => { a.href = href; });
+    }
+
+    (function init() {
+      const params = new URLSearchParams(location.search);
+      const lang = params.get('lang');
+      if (lang && ['en', 'es', 'pt'].includes(lang)) {
+        showLang(lang);
+      } else {
+        updatePrivacyLinks('en');
+      }
+    })();
   </script>
 </body>
 </html>

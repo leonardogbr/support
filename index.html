@@ -74,7 +74,7 @@
     <h1>Support & FAQ</h1>
     <p>Select an app to view its FAQ and support information.</p>
     <ul class="app-list">
-      <li><a href="./onetapdodge/">One Tap Dodge</a></li>
+      <li><a href="./onetapdodge/?lang=en">One Tap Dodge</a></li>
     </ul>
   </div>
 
@@ -82,7 +82,7 @@
     <h1>Soporte y FAQ</h1>
     <p>Selecciona una aplicación para ver su FAQ e información de soporte.</p>
     <ul class="app-list">
-      <li><a href="./onetapdodge/">One Tap Dodge</a></li>
+      <li><a href="./onetapdodge/?lang=es">One Tap Dodge</a></li>
     </ul>
   </div>
 
@@ -90,7 +90,7 @@
     <h1>Suporte e FAQ</h1>
     <p>Selecione um aplicativo para ver seu FAQ e informações de suporte.</p>
     <ul class="app-list">
-      <li><a href="./onetapdodge/">One Tap Dodge</a></li>
+      <li><a href="./onetapdodge/?lang=pt">One Tap Dodge</a></li>
     </ul>
   </div>
 
@@ -101,6 +101,12 @@
       document.getElementById('content-' + lang).classList.add('active');
       document.getElementById('btn-' + lang).classList.add('active');
     }
+
+    (function init() {
+      const params = new URLSearchParams(location.search);
+      const lang = params.get('lang');
+      if (lang && ['en', 'es', 'pt'].includes(lang)) showLang(lang);
+    })();
   </script>
 </body>
 </html>
