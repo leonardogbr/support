@@ -29,6 +29,19 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .back-link { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .lang-tabs { margin-bottom: 1.5rem; }
+    .lang-tabs button {
+      background: var(--border);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      margin-right: 0.5rem;
+    }
+    .lang-tabs button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
     .contact-box {
       background: var(--border);
       padding: 1.25rem;
@@ -51,48 +64,155 @@
   </style>
 </head>
 <body>
-  <a href="../" class="back-link">← All apps</a>
+  <a href="../" id="back-link" class="back-link">← All apps</a>
 
-  <h1>One Tap Dodge – Support & FAQ</h1>
-
-  <h2>FAQ</h2>
-
-  <div class="faq-item">
-    <p class="faq-q">How do I play?</p>
-    <p class="faq-a">Tap to swap lanes and dodge obstacles. Collect coins, complete challenges, and unlock new skins. Avoid obstacles to survive and increase your score.</p>
+  <div class="lang-tabs">
+    <button id="btn-en" class="active" onclick="showLang('en')">English</button>
+    <button id="btn-es" onclick="showLang('es')">Español</button>
+    <button id="btn-pt" onclick="showLang('pt')">Português</button>
   </div>
 
-  <div class="faq-item">
-    <p class="faq-q">What are coins used for?</p>
-    <p class="faq-a">Coins are earned during gameplay and can be spent to unlock new skins in the Customization screen. There are no in-app purchases — coins are only earned by playing.</p>
+  <div id="content-en" class="lang-content active">
+    <h1>One Tap Dodge – Support & FAQ</h1>
+
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <p class="faq-q">How do I play?</p>
+      <p class="faq-a">Tap to swap lanes and dodge obstacles. Collect coins, complete challenges, and unlock new skins. Avoid obstacles to survive and increase your score.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">What are coins used for?</p>
+      <p class="faq-a">Coins are earned during gameplay and can be spent to unlock new skins in the Customization screen. There are no in-app purchases — coins are only earned by playing.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">How does the revive (watch ad to continue) work?</p>
+      <p class="faq-a">When you hit an obstacle, you can optionally watch a short video ad to revive and continue your current run. This is entirely optional. You can play again without watching.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">My progress was lost. What happened?</p>
+      <p class="faq-a">Progress is stored locally on your device. Uninstalling the app or clearing app data will delete it. Make sure not to clear the app's storage if you want to keep your progress.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">The app crashes or has a bug. What should I do?</p>
+      <p class="faq-a">Try restarting the app or your device. If the issue continues, contact us with your device model and a brief description of what happened. We'll do our best to help.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Is the app safe for children?</p>
+      <p class="faq-a">Yes. One Tap Dodge is designed for all ages. We use child-directed ad settings (no personalized ads, age-appropriate content only) and do not collect personal information. See our <a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Privacy Policy</a> for details.</p>
+    </div>
+
+    <h2>Contact Us</h2>
+    <div class="contact-box">
+      <p style="margin-top: 0;"><strong>Email:</strong> <a href="mailto:velhorg@hotmail.com">velhorg@hotmail.com</a></p>
+      <p>We typically respond within a few days. Include the app name and a brief description of your question or issue.</p>
+    </div>
+
+    <p style="margin-top: 2rem;"><a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Privacy Policy</a></p>
   </div>
 
-  <div class="faq-item">
-    <p class="faq-q">How does the revive (watch ad to continue) work?</p>
-    <p class="faq-a">When you hit an obstacle, you can optionally watch a short video ad to revive and continue your current run. This is entirely optional. You can play again without watching.</p>
+  <div id="content-es" class="lang-content">
+    <h1>One Tap Dodge – Soporte y FAQ</h1>
+
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <p class="faq-q">¿Cómo se juega?</p>
+      <p class="faq-a">Toca para cambiar de carril y esquivar obstáculos. Recoge monedas, completa desafíos y desbloquea nuevas skins. Evita los obstáculos para sobrevivir y aumentar tu puntuación.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">¿Para qué sirven las monedas?</p>
+      <p class="faq-a">Las monedas se ganan durante el juego y pueden gastarse para desbloquear nuevas skins en la pantalla de Personalización. No hay compras dentro de la app — las monedas solo se ganan jugando.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">¿Cómo funciona el revive (ver anuncio para continuar)?</p>
+      <p class="faq-a">Cuando chocas con un obstáculo, puedes ver opcionalmente un breve anuncio en video para revivir y continuar tu partida actual. Es completamente opcional. Puedes jugar de nuevo sin verlo.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Perdí mi progreso. ¿Qué pasó?</p>
+      <p class="faq-a">El progreso se guarda localmente en tu dispositivo. Desinstalar la app o borrar los datos de la app lo eliminará. No borres el almacenamiento de la app si quieres conservar tu progreso.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">La app se cierra o tiene un error. ¿Qué debo hacer?</p>
+      <p class="faq-a">Intenta reiniciar la app o tu dispositivo. Si el problema continúa, contáctanos con el modelo de tu dispositivo y una breve descripción de lo que ocurrió. Haremos todo lo posible por ayudarte.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">¿La app es segura para niños?</p>
+      <p class="faq-a">Sí. One Tap Dodge está diseñada para todas las edades. Usamos ajustes de anuncios dirigidos a niños (sin anuncios personalizados, solo contenido apropiado) y no recopilamos información personal. Consulta nuestra <a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Política de Privacidad</a> para más detalles.</p>
+    </div>
+
+    <h2>Contáctanos</h2>
+    <div class="contact-box">
+      <p style="margin-top: 0;"><strong>Email:</strong> <a href="mailto:velhorg@hotmail.com">velhorg@hotmail.com</a></p>
+      <p>Normalmente respondemos en unos días. Incluye el nombre de la app y una breve descripción de tu pregunta o problema.</p>
+    </div>
+
+    <p style="margin-top: 2rem;"><a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Política de Privacidad</a></p>
   </div>
 
-  <div class="faq-item">
-    <p class="faq-q">My progress was lost. What happened?</p>
-    <p class="faq-a">Progress is stored locally on your device. Uninstalling the app or clearing app data will delete it. Make sure not to clear the app's storage if you want to keep your progress.</p>
+  <div id="content-pt" class="lang-content">
+    <h1>One Tap Dodge – Suporte e FAQ</h1>
+
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <p class="faq-q">Como jogar?</p>
+      <p class="faq-a">Toque para trocar de faixa e desviar dos obstáculos. Colete moedas, complete desafios e desbloqueie novas skins. Evite os obstáculos para sobreviver e aumentar sua pontuação.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Para que servem as moedas?</p>
+      <p class="faq-a">As moedas são ganhas durante o jogo e podem ser gastas para desbloquear novas skins na tela de Personalização. Não há compras dentro do app — as moedas só são ganhas jogando.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Como funciona o revive (assistir anúncio para continuar)?</p>
+      <p class="faq-a">Quando você bate em um obstáculo, pode opcionalmente assistir a um breve anúncio em vídeo para reviver e continuar sua partida atual. É totalmente opcional. Você pode jogar de novo sem assistir.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">Perdi meu progresso. O que aconteceu?</p>
+      <p class="faq-a">O progresso é armazenado localmente no seu dispositivo. Desinstalar o app ou limpar os dados do app irá excluí-lo. Não limpe o armazenamento do app se quiser manter seu progresso.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">O app trava ou tem um bug. O que devo fazer?</p>
+      <p class="faq-a">Tente reiniciar o app ou seu dispositivo. Se o problema continuar, entre em contato com o modelo do seu dispositivo e uma breve descrição do que aconteceu. Faremos o possível para ajudar.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">O app é seguro para crianças?</p>
+      <p class="faq-a">Sim. One Tap Dodge foi projetado para todas as idades. Usamos configurações de anúncios direcionadas a crianças (sem anúncios personalizados, apenas conteúdo adequado) e não coletamos informações pessoais. Consulte nossa <a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Política de Privacidade</a> para detalhes.</p>
+    </div>
+
+    <h2>Contato</h2>
+    <div class="contact-box">
+      <p style="margin-top: 0;"><strong>E-mail:</strong> <a href="mailto:velhorg@hotmail.com">velhorg@hotmail.com</a></p>
+      <p>Normalmente respondemos em alguns dias. Inclua o nome do app e uma breve descrição da sua dúvida ou problema.</p>
+    </div>
+
+    <p style="margin-top: 2rem;"><a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Política de Privacidade</a></p>
   </div>
 
-  <div class="faq-item">
-    <p class="faq-q">The app crashes or has a bug. What should I do?</p>
-    <p class="faq-a">Try restarting the app or your device. If the issue continues, contact us with your device model and a brief description of what happened. We'll do our best to help.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">Is the app safe for children?</p>
-    <p class="faq-a">Yes. One Tap Dodge is designed for all ages. We use child-directed ad settings (no personalized ads, age-appropriate content only) and do not collect personal information. See our <a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Privacy Policy</a> for details.</p>
-  </div>
-
-  <h2>Contact Us</h2>
-  <div class="contact-box">
-    <p style="margin-top: 0;"><strong>Email:</strong> <a href="mailto:velhorg@hotmail.com">velhorg@hotmail.com</a></p>
-    <p>We typically respond within a few days. Include the app name and a brief description of your question or issue.</p>
-  </div>
-
-  <p style="margin-top: 2rem;"><a href="https://lrgabriel.github.io/privacy-policies/onetapdodge/">Privacy Policy</a></p>
+  <script>
+    function showLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.getElementById('btn-' + lang).classList.add('active');
+      var backText = { en: '← All apps', es: '← Todas las apps', pt: '← Todos os apps' };
+      document.getElementById('back-link').textContent = backText[lang] || backText.en;
+    }
+  </script>
 </body>
 </html>

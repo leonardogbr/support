@@ -24,6 +24,19 @@
       margin-inline: auto;
     }
     h1 { font-size: 1.5rem; margin-top: 0; }
+    .lang-tabs { margin-bottom: 1.5rem; }
+    .lang-tabs button {
+      background: var(--border);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      margin-right: 0.5rem;
+    }
+    .lang-tabs button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
     .app-list { list-style: none; padding: 0; margin: 1.5rem 0; }
     .app-list li { margin-bottom: 0.75rem; }
     .app-list a {
@@ -51,10 +64,43 @@
   </style>
 </head>
 <body>
-  <h1>Support & FAQ</h1>
-  <p>Select an app to view its FAQ and support information.</p>
-  <ul class="app-list">
-    <li><a href="./onetapdodge/">One Tap Dodge</a></li>
-  </ul>
+  <div class="lang-tabs">
+    <button id="btn-en" class="active" onclick="showLang('en')">English</button>
+    <button id="btn-es" onclick="showLang('es')">Español</button>
+    <button id="btn-pt" onclick="showLang('pt')">Português</button>
+  </div>
+
+  <div id="content-en" class="lang-content active">
+    <h1>Support & FAQ</h1>
+    <p>Select an app to view its FAQ and support information.</p>
+    <ul class="app-list">
+      <li><a href="./onetapdodge/">One Tap Dodge</a></li>
+    </ul>
+  </div>
+
+  <div id="content-es" class="lang-content">
+    <h1>Soporte y FAQ</h1>
+    <p>Selecciona una aplicación para ver su FAQ e información de soporte.</p>
+    <ul class="app-list">
+      <li><a href="./onetapdodge/">One Tap Dodge</a></li>
+    </ul>
+  </div>
+
+  <div id="content-pt" class="lang-content">
+    <h1>Suporte e FAQ</h1>
+    <p>Selecione um aplicativo para ver seu FAQ e informações de suporte.</p>
+    <ul class="app-list">
+      <li><a href="./onetapdodge/">One Tap Dodge</a></li>
+    </ul>
+  </div>
+
+  <script>
+    function showLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('content-' + lang).classList.add('active');
+      document.getElementById('btn-' + lang).classList.add('active');
+    }
+  </script>
 </body>
 </html>
